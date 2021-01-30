@@ -1,0 +1,21 @@
+<div class=" d-flex flex-row flex-wrap align-items-stretch justify-content-center font-weight-bold text-left sticky-top p-0 modal-top">
+
+    <div class="col-6 d-flex align-middle justify-content-center p-2 user-container">
+        <div class="d-flex flex-column justify-content-between align-items-center">
+            <img [src]="this.suggestionInfo.mateUserInfo.applicant.gender == 1 ? '../../../../assets/img/avatar-man.jpg' : '../../../../assets/img/avatar-woman.png'"
+                 class="image-fluid rounded mb-3" width="100" height="100">
+            <p class="">{{this.suggestionInfo.mateUserInfo.applicant.firstname + ' ' + this.suggestionInfo.mateUserInfo.applicant.lastname}}</p>
+        </div>
+        <div class="triangle-up"></div>
+    </div>
+
+    <div class="col-6 d-flex align-middle justify-content-center p-2 user-container">
+        <div class="d-flex flex-column justify-content-between align-items-center">
+            <img [src]="this.suggestionInfo.suggestedUserInfo.applicant.gender == 1 ? '../../../../assets/img/avatar-man.jpg' : '../../../../assets/img/avatar-woman.png'"
+                 class="image-fluid rounded mb-3" width="100" height="100">
+            <p class="">{{this.suggestionInfo.suggestedUserInfo.applicant.firstname + ' ' + this.suggestionInfo.suggestedUserInfo.applicant.lastname}}</p>
+        </div>
+        <div class="triangle-up"></div>
+    </div>
+
+</div>

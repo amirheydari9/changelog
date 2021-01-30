@@ -1,0 +1,175 @@
+<form [formGroup]="familyInfoForm" (ngSubmit)="createOrUpdateRelationShip()">
+    <div class="row">
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>رابطه</mat-label>
+                <mat-select formControlName="familyRelationship">
+                    <mat-option *ngFor="let relation of familyRelationship" [value]="relation.value">
+                        {{relation.viewValue}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="errorHandling('familyRelationship', 'required')">رابطه اجباری است</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>جنسیت</mat-label>
+                <mat-select formControlName="gender">
+                    <mat-option *ngFor="let type of gender" [value]="type.value">
+                        {{type.viewValue}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="errorHandling('gender', 'required')">جنسیت اجباری است</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>سال تولد</mat-label>
+                <input matInput type="text" formControlName="birthYear" mask="9999">
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12 text-left">
+            <mat-label class="font-small-2">زنده است</mat-label>
+            <mat-slide-toggle formControlName="isAlive" class="w-100 mt-2"></mat-slide-toggle>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>استان محل تولد</mat-label>
+                <mat-select formControlName="placeOfBirthProvinceId">
+                    <mat-option>
+                        <ngx-mat-select-search
+                                placeholderLabel="جستجو استان تولد"
+                                noEntriesFoundLabel="موردی یافت نشد"
+                                formControlName="provinceFilterCtrl"
+                        >
+                        </ngx-mat-select-search>
+                    </mat-option>
+                    <mat-option *ngFor="let province of filteredProvinces | async" [value]="province">
+                        {{province.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>شهر محل تولد</mat-label>
+                <mat-select formControlName="placeOfBirthCityId">
+                    <mat-option>
+                        <ngx-mat-select-search
+                                placeholderLabel="جستجو شهر تولد"
+                                noEntriesFoundLabel="موردی یافت نشد"
+                                formControlName="cityFilterCtrl"
+                        >
+                        </ngx-mat-select-search>
+                    </mat-option>
+                    <mat-option *ngFor="let city of filteredCities | async" [value]="city">
+                        {{city.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>وضعیت اشتغال</mat-label>
+                <mat-select formControlName="jobStatus">
+                    <mat-option *ngFor="let jobStatus of jobStatus" [value]="jobStatus.value">
+                        {{jobStatus.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>مقطع تحصیلی</mat-label>
+                <mat-select formControlName="educationalStage">
+                    <mat-option *ngFor="let stage of educationalStage" [value]="stage.value">
+                        {{stage.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>وضعیت تاهل</mat-label>
+                <mat-select formControlName="maritalStatus">
+                    <mat-option *ngFor="let status of maritalStatus" [value]="status.value">
+                        {{status.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>وضعیت اشتغال همسر</mat-label>
+                <mat-select formControlName="spouseJobStatus">
+                    <mat-option *ngFor="let jobStatus of jobStatus" [value]="jobStatus.value">
+                        {{jobStatus.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>تحصیلات همسر</mat-label>
+                <mat-select formControlName="spouseEducationalStage">
+                    <mat-option *ngFor="let stage of educationalStage" [value]="stage.value">
+                        {{stage.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <button mat-raised-button class="btn btn-success text-white" type="submit"
+                    [disabled]="!familyInfoForm.valid" *ngIf="isTebyanAdmin">
+                <span>{{formMode === 'create' ? 'ثیت' : 'ویرایش'}}</span>
+            </button>
+            <button mat-raised-button class="btn btn-danger text-white" *ngIf="formMode==='update'"
+                    (click)="editCancel()">
+                <span>انصراف</span>
+            </button>
+        </div>
+    </div>
+</form>
+<div class="table-responsive">
+    <table mat-table class="w-100 text-left" [dataSource]="dataSource">
+        <ng-container matColumnDef="familyRelationship">
+            <th mat-header-cell *matHeaderCellDef>رابطه</th>
+            <td mat-cell *matCellDef="let element">{{element.familyRelationshipText}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="isAlive">
+            <th mat-header-cell *matHeaderCellDef>حیات</th>
+            <td mat-cell *matCellDef="let element">{{element.isAlive ? 'زنده' : 'فوت شده'}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="job">
+            <th mat-header-cell *matHeaderCellDef>وضعیت اشتغال</th>
+            <td mat-cell *matCellDef="let element"> {{element.jobStatusText}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="education">
+            <th mat-header-cell *matHeaderCellDef>مقطع تحصیلی</th>
+            <td mat-cell *matCellDef="let element"> {{element.educationalStageText}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> عملیات</th>
+            <td mat-cell *matCellDef="let element" class="action-link">
+                <button mat-icon-button (click)="viewDetail($event , element)" matTooltip="ویرایش">
+                    <mat-icon inline class="font-medium-3">edit</mat-icon>
+                </button>
+                <button mat-icon-button (click)="deleteRelation($event , element)" matTooltip="حذف" *ngIf="isTebyanAdmin">
+                    <mat-icon inline class="font-medium-3">delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator showFirstLastButtons [pageSizeOptions]="[5,10,20]"></mat-paginator>
+</div>
+
+
+
+

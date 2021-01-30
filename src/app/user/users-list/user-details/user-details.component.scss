@@ -1,0 +1,37 @@
+.tab {
+}
+
+.tab button {
+  display: block;
+  background-color: inherit;
+  color: #a2a2a2;
+  padding: 13px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: right;
+  cursor: pointer;
+  transition: 0.3s ease;
+  border-left: 5px solid #dcdcdc;
+}
+
+.tab button:hover {
+}
+
+.tab button.active {
+  border-left: 5px solid #00c4ff;
+  color: #404040;
+}
+
+.tabcontent {
+}
+
+.mat-icon {
+  color: #a2a2a2;
+}
+
+@media screen and (max-width: 991px){
+    .tab button{
+      border-left: unset !important;
+    }
+}

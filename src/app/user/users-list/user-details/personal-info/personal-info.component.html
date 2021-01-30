@@ -1,0 +1,110 @@
+<form [formGroup]="personalInfoForm">
+    <div class="row">
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>قد (سانتی متر)</mat-label>
+                <input matInput type="text" formControlName="height" mask="999">
+                <mat-error *ngIf="errorHandling('height', 'required')">قد اجباری است</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>وزن (کیلوگرم)</mat-label>
+                <input matInput type="text" formControlName="weight" mask="999">
+                <mat-error *ngIf="errorHandling('weight', 'required')">وزن اجباری است</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>رنگ پوست</mat-label>
+                <mat-select formControlName="skinColor">
+                    <mat-option *ngFor="let skinColors of skinColors" [value]="skinColors.value">
+                        {{skinColors.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>رنگ چشم</mat-label>
+                <mat-select formControlName="eyeColor">
+                    <mat-option *ngFor="let eyeColors of eyeColors" [value]="eyeColors.value">
+                        {{eyeColors.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>تناسب اندام</mat-label>
+                <mat-select formControlName="limbType">
+                    <mat-option *ngFor="let limbType of limbTypes" [value]="limbType.value">
+                        {{limbType.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>نوع پوشش متقاضی</mat-label>
+                <mat-select formControlName="clothingType">
+                    <mat-option *ngFor="let clothingType of clothingTypes" [value]="clothingType.value">
+                        {{clothingType.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>نوع پوشش بانوان خانواده</mat-label>
+                <mat-select formControlName="womenOfFamilyClothingTypes" multiple>
+                    <app-select-check-all [model]="personalInfoForm.controls.womenOfFamilyClothingTypes"
+                                          [values]="WomenOfFamilyClothingType"></app-select-check-all>
+                    <mat-option *ngFor="let clothingType of WomenOfFamilyClothingType" [value]="clothingType">
+                        {{clothingType['viewValue']}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12" *ngIf="this.userData.applicant.gender === 1">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>وضعیت نظام وظیفه</mat-label>
+                <mat-select formControlName="militaryServiceStatus">
+                    <mat-option *ngFor="let militaryServiceStatuse of militaryServiceStatuses"
+                                [value]="militaryServiceStatuse.value">
+                        {{militaryServiceStatuse.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12 text-left">
+            <mat-label class="font-small-2">بیماری خاص دارد</mat-label>
+            <mat-slide-toggle formControlName="hasSpecificDisease" class="w-100 mt-2"></mat-slide-toggle>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>نوع بیماری خاص</mat-label>
+                <input matInput type="text" formControlName="specificDiseaseName">
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12 text-left">
+            <mat-label class="font-small-2">معلولیت دارد</mat-label>
+            <mat-slide-toggle formControlName="hasDisability" class="w-100 mt-2"></mat-slide-toggle>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>توضیح معلولیت</mat-label>
+                <input matInput type="text" formControlName="disabilityName">
+            </mat-form-field>
+        </div>
+        <div class="col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>توضیحات مشخصات ظاهری</mat-label>
+                <textarea matInput matTextareaAutosize="false"
+                          formControlName="appearanceInformationDescription"></textarea>
+            </mat-form-field>
+        </div>
+    </div>
+</form>
+
+

@@ -1,0 +1,32 @@
+<ngx-ui-loader></ngx-ui-loader>
+<div *ngIf="!this.oAuthService.getAccessToken()">
+    <section id="login">
+        <div class="container-fluid">
+            <div class="row full-height-vh m-0">
+                <div class="col-12 d-flex align-items-center justify-content-center">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-body login-img">
+                                <div class="row m-0">
+                                    <div class="col-12 py-2 px-3 text-center align-middle">
+                                        <img src="../../../assets/img/gallery/login.png"
+                                                alt=""
+                                                class="img-fluid mt-5"
+                                                width="400"
+                                                height="230"/>
+                                    </div>
+                                    <div class="col-12 bg-white px-4 pt-3">
+                                        <button class="btn btn-block btn-secondary" (click)="this.oAuthService.initCodeFlow();">
+                                            ورود با آیدال
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<router-outlet *ngIf="this.oAuthService.getAccessToken() && this.oAuthService.getIdToken()"></router-outlet>

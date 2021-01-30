@@ -1,0 +1,170 @@
+<form [formGroup]="agentInfoForm" (ngSubmit)="editOrCreateAgent()">
+    <div class="row">
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>نام</mat-label>
+                <input matInput type="text" formControlName="firstname">
+                <mat-error *ngIf="errorHandling('firstname', 'required')">نام اجباری است</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>نام خانوادگی</mat-label>
+                <input matInput type="text" formControlName="lastname">
+                <mat-error *ngIf="errorHandling('lastname', 'required')">نام خانوادگی اجباری است</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>کد ملی</mat-label>
+                <input matInput type="text" formControlName="nationalId" mask="0000000000">
+                <mat-error *ngIf="errorHandling('nationalId', 'required')">کد ملی اجباری است</mat-error>
+                <mat-error *ngIf="errorHandling('nationalId', 'validNationalId')">کد ملی نامعتبر است</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>جنسیت</mat-label>
+                <mat-select formControlName="gender">
+                    <mat-option *ngFor="let gender of genders" [value]="gender.value">
+                        {{gender.viewValue}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="errorHandling('gender', 'required')">جنیست اجباری است</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>تاریخ تولد</mat-label>
+                <input matInput [matDatepicker]="picker1" formControlName="birthday" readonly
+                       (dateChange)="onChangeBirthday($event)">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+                <mat-error *ngIf="errorHandling('birthday', 'required')">تاریخ تولد اجباری است</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>تاریخ ثبت نام</mat-label>
+                <input matInput [matDatepicker]="picker2" formControlName="registrationDate"
+                       (dateChange)="onChangeRegistrationDate($event)">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+                <mat-error *ngIf="errorHandling('registrationDate', 'required')">تاریخ ثبت اجباری است</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>لیست گرو ها</mat-label>
+                <mat-select formControlName="group">
+                    <mat-option>
+                        <ngx-mat-select-search
+                                placeholderLabel="جستجو گروه"
+                                noEntriesFoundLabel="موردی یافت نشد"
+                                formControlName="groupFilterCtrl"
+                        >
+                        </ngx-mat-select-search>
+                    </mat-option>
+                    <mat-option *ngFor="let group of filteredGroups | async" [value]="group">
+                        {{group.name}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="errorHandling('group', 'required')">لیست گروه ها اجباری است</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>کد معرف ازدواج</mat-label>
+                <input matInput type="text" formControlName="agentCode">
+                <mat-error *ngIf="errorHandling('agentCode', 'required')">کد معرف ازدواج اجباری است</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>سطح معرف ازدواج</mat-label>
+                <mat-select formControlName="level">
+                    <mat-option *ngFor="let level of agentLevels" [value]="level.value">
+                        {{level.viewValue}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="errorHandling('level', 'required')">سطح معرف ازدواج اجباری است</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>استان محل سکونت</mat-label>
+                <mat-select formControlName="placeOfResidenceProvince">
+                    <mat-option>
+                        <ngx-mat-select-search
+                                placeholderLabel="جستجو استان سکونت"
+                                noEntriesFoundLabel="موردی یافت نشد"
+                                formControlName="provinceFilterCtrl"
+                        >
+                        </ngx-mat-select-search>
+                    </mat-option>
+                    <mat-option *ngFor="let province of filteredProvinces | async" [value]="province">
+                        {{province.name}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="errorHandling('placeOfResidenceProvince', 'required')">استان اجباری است</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>شهر محل سکونت</mat-label>
+                <mat-select formControlName="placeOfResidenceCity">
+                    <mat-option>
+                        <ngx-mat-select-search
+                                placeholderLabel="جستجو شهر سکونت"
+                                noEntriesFoundLabel="موردی یافت نشد"
+                                formControlName="cityFilterCtrl"
+                        >
+                        </ngx-mat-select-search>
+                    </mat-option>
+                    <mat-option *ngFor="let city of filteredCities | async" [value]="city">
+                        {{city.name}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="errorHandling('placeOfResidenceCity', 'required')">شهر اجباری است</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>موبایل</mat-label>
+                <input matInput type="text" formControlName="mobile" mask="00000000000">
+                <mat-error *ngIf="errorHandling('mobile', 'required')">موبایل اجباری است</mat-error>
+                <mat-error *ngIf="errorHandling('mobile', 'validMobile')">موبایل معتبر نمی باشد</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>تلفن</mat-label>
+                <input matInput type="text" formControlName="tel" mask="00000000000">
+                <mat-error *ngIf="errorHandling('tel', 'required')">تلفن اجباری است</mat-error>
+                <mat-error *ngIf="errorHandling('tel', 'validTel')">تلفن معتبر نمی باشد</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>آدرس</mat-label>
+                <input matInput type="text" formControlName="address">
+                <mat-error *ngIf="errorHandling('address', 'required')">آدرس اجباری است</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>توضیحات</mat-label>
+                <input matInput type="text" formControlName="description">
+                <mat-error *ngIf="errorHandling('description', 'required')">توضیحات اجباری است</mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <button *ngIf="agentData" type="submit" mat-raised-button class="mr-2 bg-success text-white">ویرایش معرف ازدواج</button>
+    <button *ngIf="!agentData" type="submit" mat-raised-button class="mr-2 bg-success text-white">ایجاد معرف ازدواج</button>
+</form>
+

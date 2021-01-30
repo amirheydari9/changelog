@@ -1,0 +1,204 @@
+<div class="row">
+  <div class="col-12 p-2" style="direction: rtl">
+    <app-suggestion-header [suggestionInfo]="suggestionInfo"></app-suggestion-header>
+
+        <div class="text-left">
+          <p class="col-12 w-100 font-weight-bold p-2">پدر</p>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">سال تولد</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateFatherBirthYear ? this.mateFatherBirthYear : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedFatherBirthYear ? this.suggestedFatherBirthYear : '-'}}</p>
+          </div>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">استان محل تولد</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateFatherPlaceOfBirthProvinceName ? this.mateFatherPlaceOfBirthProvinceName : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedFatherPlaceOfBirthProvinceName ? this.suggestedFatherPlaceOfBirthProvinceName : '-'}}</p>
+          </div>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">شهر محل تولد</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateFatherPlaceOfBirthCityName ? this.mateFatherPlaceOfBirthCityName : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedFatherPlaceOfBirthCityName ? this.suggestedFatherPlaceOfBirthCityName : '-'}}</p>
+          </div>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">وضعیت اشتغال</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateFatherJobStatusText ? this.mateFatherJobStatusText : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedFatherJobStatusText ? this.suggestedFatherJobStatusText : '-'}}</p>
+          </div>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">سطح تحصیلات</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateFatherEducationalStageText ? this.mateFatherEducationalStageText : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedFatherEducationalStageText ? this.suggestedFatherEducationalStageText : '-'}}</p>
+          </div>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">وضعیت تاهل</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateFatherMaritalStatusText ? this.mateFatherMaritalStatusText : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedFatherMaritalStatusText ? this.suggestedFatherMaritalStatusText : '-'}}</p>
+          </div>
+        </div>
+        <div class="text-left">
+          <p class="col-12 w-100 font-weight-bold p-2">مادر</p>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">سال تولد</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateMotherBirthYear ? this.mateMotherBirthYear : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedMotherBirthYear ? this.suggestedMotherBirthYear : '-'}}</p>
+          </div>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">استان محل تولد</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateMotherPlaceOfBirthProvinceName ? this.mateMotherPlaceOfBirthProvinceName : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedMotherPlaceOfBirthProvinceName ? this.suggestedMotherPlaceOfBirthProvinceName : '-'}}</p>
+          </div>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">شهر محل تولد</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateMotherPlaceOfBirthCityName ? this.mateMotherPlaceOfBirthCityName : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedMotherPlaceOfBirthCityName ? this.suggestedMotherPlaceOfBirthCityName : '-'}}</p>
+          </div>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">وضعیت اشتغال</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateMotherJobStatusText ? this.mateMotherJobStatusText : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedMotherJobStatusText ? this.suggestedMotherJobStatusText : '-'}}</p>
+          </div>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">سطح تحصیلات</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateMotherEducationalStageText ? this.mateMotherEducationalStageText : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedMotherEducationalStageText ? this.suggestedMotherEducationalStageText : '-'}}</p>
+          </div>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">وضعیت تاهل</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateMotherMaritalStatusText ? this.mateMotherMaritalStatusText : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedMotherMaritalStatusText ? this.suggestedMotherMaritalStatusText : '-'}}</p>
+          </div>
+        </div>
+        <div class="text-left">
+          <p class="col-12 w-100 font-weight-bold p-2">برادر</p>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">سال تولد</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateBrotherBirthYear ? this.mateBrotherBirthYear : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedBrotherBirthYear ? this.suggestedBrotherBirthYear : '-'}}</p>
+          </div>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">استان محل تولد</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateBrotherPlaceOfBirthProvinceName ? this.mateBrotherPlaceOfBirthProvinceName : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedBrotherPlaceOfBirthProvinceName ? this.suggestedBrotherPlaceOfBirthProvinceName : '-'}}</p>
+          </div>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">شهر محل تولد</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateBrotherPlaceOfBirthCityName ? this.mateBrotherPlaceOfBirthCityName : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedBrotherPlaceOfBirthCityName ? this.suggestedBrotherPlaceOfBirthCityName : '-'}}</p>
+          </div>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">وضعیت اشتغال</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateBrotherJobStatusText ? this.mateBrotherJobStatusText : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedBrotherJobStatusText ? this.suggestedBrotherJobStatusText : '-'}}</p>
+          </div>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">سطح تحصیلات</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateBrotherEducationalStageText ? this.mateBrotherEducationalStageText : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedBrotherEducationalStageText ? this.suggestedBrotherEducationalStageText : '-'}}</p>
+          </div>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">وضعیت تاهل</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateBrotherMaritalStatusText ? this.mateBrotherMaritalStatusText : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedBrotherMaritalStatusText ? this.suggestedBrotherMaritalStatusText : '-'}}</p>
+          </div>
+        </div>
+        <div class="text-left">
+          <p class="col-12 w-100 font-weight-bold p-2">خواهر</p>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">سال تولد</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateSisterBirthYear ? this.mateSisterBirthYear : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedSisterBirthYear ? this.suggestedSisterBirthYear : '-'}}</p>
+          </div>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">استان محل تولد</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateSisterPlaceOfBirthProvinceName ? this.mateSisterPlaceOfBirthProvinceName : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedSisterPlaceOfBirthProvinceName ? this.suggestedSisterPlaceOfBirthProvinceName : '-'}}</p>
+          </div>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">شهر محل تولد</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateSisterPlaceOfBirthCityName ? this.mateSisterPlaceOfBirthCityName : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedSisterPlaceOfBirthCityName ? this.suggestedSisterPlaceOfBirthCityName : '-'}}</p>
+          </div>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">وضعیت اشتغال</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateSisterJobStatusText ? this.mateSisterJobStatusText : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedSisterJobStatusText ? this.suggestedSisterJobStatusText : '-'}}</p>
+          </div>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">سطح تحصیلات</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateSisterEducationalStageText ? this.mateSisterEducationalStageText : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedSisterEducationalStageText ? this.suggestedSisterEducationalStageText : '-'}}</p>
+          </div>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">وضعیت تاهل</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateSisterMaritalStatusText ? this.mateSisterMaritalStatusText : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedSisterMaritalStatusText ? this.suggestedSisterMaritalStatusText : '-'}}</p>
+          </div>
+        </div>
+        <div class="text-left">
+          <p class="col-12 w-100 font-weight-bold p-2">همسر</p>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">سال تولد</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateWifeBirthYear ? this.mateWifeBirthYear : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedWifeBirthYear ? this.suggestedWifeBirthYear : '-'}}</p>
+          </div>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">استان محل تولد</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateWifePlaceOfBirthProvinceName ? this.mateWifePlaceOfBirthProvinceName : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedWifePlaceOfBirthProvinceName ? this.suggestedWifePlaceOfBirthProvinceName : '-'}}</p>
+          </div>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">شهر محل تولد</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateWifePlaceOfBirthCityName ? this.mateWifePlaceOfBirthCityName : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedWifePlaceOfBirthCityName ? this.suggestedWifePlaceOfBirthCityName : '-'}}</p>
+          </div>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">وضعیت اشتغال</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateWifeJobStatusText ? this.mateWifeJobStatusText : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedWifeJobStatusText ? this.suggestedWifeJobStatusText : '-'}}</p>
+          </div>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">سطح تحصیلات</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateWifeEducationalStageText ? this.mateWifeEducationalStageText : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedWifeEducationalStageText ? this.suggestedWifeEducationalStageText : '-'}}</p>
+          </div>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">وضعیت تاهل</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateWifeMaritalStatusText ? this.mateWifeMaritalStatusText : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedWifeMaritalStatusText ? this.suggestedWifeMaritalStatusText : '-'}}</p>
+          </div>
+        </div>
+        <div class="text-left">
+          <p class="col-12 w-100 font-weight-bold p-2">فرزندان</p>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">سال تولد</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateChildrenBirthYear ? this.mateChildrenBirthYear : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedChildrenBirthYear ? this.suggestedChildrenBirthYear : '-'}}</p>
+          </div>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">استان محل تولد</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateChildrenPlaceOfBirthProvinceName ? this.mateChildrenPlaceOfBirthProvinceName : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedChildrenPlaceOfBirthProvinceName ? this.suggestedChildrenPlaceOfBirthProvinceName : '-'}}</p>
+          </div>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">شهر محل تولد</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateChildrenPlaceOfBirthCityName ? this.mateChildrenPlaceOfBirthCityName : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedChildrenPlaceOfBirthCityName ? this.suggestedChildrenPlaceOfBirthCityName : '-'}}</p>
+          </div>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">وضعیت اشتغال</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateChildrenJobStatusText ? this.mateChildrenJobStatusText : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedChildrenJobStatusText ? this.suggestedChildrenJobStatusText : '-'}}</p>
+          </div>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">سطح تحصیلات</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateChildrenEducationalStageText ? this.mateChildrenEducationalStageText : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedChildrenEducationalStageText ? this.suggestedChildrenEducationalStageText : '-'}}</p>
+          </div>
+          <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">وضعیت تاهل</p>
+          <div class="row">
+            <p class="col-6 px-4 font-weight-bold">{{this.mateChildrenMaritalStatusText ? this.mateChildrenMaritalStatusText : '-'}}</p>
+            <p class="col-6 px-4 font-weight-bold">{{this.suggestedChildrenMaritalStatusText ? this.suggestedChildrenMaritalStatusText : '-'}}</p>
+          </div>
+        </div>
+  </div>
+</div>

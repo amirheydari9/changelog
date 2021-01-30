@@ -1,0 +1,195 @@
+<mat-dialog-content>
+    <div class="row text-left">
+        <div class="col-lg-3">
+            <span>عنوان آزمون</span> : <span class="font-weight-bold">{{data.title}}</span>
+        </div>
+        <div class="col-lg-3">
+            <span>وضعیت نتیجه آزمون</span> : <span class="font-weight-bold">{{data.resultStatusText}}</span>
+        </div>
+        <div class="col-lg-3">
+            <span>جنسیت</span> : <span class="font-weight-bold">{{data.genderText}}</span>
+        </div>
+        <div class="col-lg-3">
+            <span>تاریخ انجام</span> : <span class="font-weight-bold">{{data.completionDate}}</span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row" *ngIf="data.testType==='Epq'">
+        <div class="col-lg-6">
+            <div class="table-responsive">
+                <table mat-table class="w-100 text-left" [dataSource]="EpqDataSource">
+                    <ng-container matColumnDef="trait">
+                        <th mat-header-cell *matHeaderCellDef>مقیاس</th>
+                        <td mat-cell *matCellDef="let element">{{element.trait}}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="persianTrait">
+                        <th mat-header-cell *matHeaderCellDef></th>
+                        <td mat-cell *matCellDef="let element">{{element.trait |epqTitle}}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="score">
+                        <th mat-header-cell *matHeaderCellDef>مقدار</th>
+                        <td mat-cell *matCellDef="let element">{{element.score}}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="scoreLevelText">
+                        <th mat-header-cell *matHeaderCellDef></th>
+                        <td mat-cell *matCellDef="let element"> {{element.scoreLevelText}} </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="EpqDisplayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: EpqDisplayedColumns;"></tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-lg-6 col-12" *ngIf="data.enQuadrant && data.enQuadrant>0">
+            <app-respondent-svg [quadrant]="data.enQuadrant"></app-respondent-svg>
+        </div>
+    </div>
+    <div class="row" *ngIf="data.testType==='Neo'">
+        <div class="col-lg-6 mb-3">
+            <p class="font-weight-bold text-left text-white m-0 p-2" style="background-color: lightcoral">مقیاس N : عصبیت (Neurotic) بی ثباتی هیجانی (اضطراب و نگرانی) </p>
+            <div class="table-responsive">
+                <table mat-table class="w-100 text-left" [dataSource]="NDataSource">
+                    <ng-container matColumnDef="trait">
+                        <th mat-header-cell *matHeaderCellDef>مقیاس</th>
+                        <td mat-cell *matCellDef="let element">{{element.trait}}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="score">
+                        <th mat-header-cell *matHeaderCellDef>مقدار</th>
+                        <td mat-cell *matCellDef="let element">{{element.score}}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="scoreLevelText">
+                        <th mat-header-cell *matHeaderCellDef></th>
+                        <td mat-cell *matCellDef="let element"> {{element.scoreLevelText}} </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="NeoDisplayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: NeoDisplayedColumns;"></tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-lg-6 mb-3">
+            <p class="font-weight-bold text-left text-white m-0 p-2" style="background-color: lightskyblue">مقیاس E : برون گرایی (Extraversion) سطح تعاملات اجتماعی </p>
+            <div class="table-responsive">
+                <table mat-table class="w-100 text-left" [dataSource]="EDataSource">
+                    <ng-container matColumnDef="trait">
+                        <th mat-header-cell *matHeaderCellDef>مقیاس</th>
+                        <td mat-cell *matCellDef="let element">{{element.trait}}</td>
+                    </ng-container>
+
+                    <!--                    <ng-container matColumnDef="persianTrait">-->
+                    <!--                        <th mat-header-cell *matHeaderCellDef>عنوان فارسی</th>-->
+                    <!--                        <td mat-cell *matCellDef="let element">{{element.persianTrait}}</td>-->
+                    <!--                    </ng-container>-->
+
+                    <ng-container matColumnDef="score">
+                        <th mat-header-cell *matHeaderCellDef>مقدار</th>
+                        <td mat-cell *matCellDef="let element">{{element.score}}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="scoreLevelText">
+                        <th mat-header-cell *matHeaderCellDef></th>
+                        <td mat-cell *matCellDef="let element"> {{element.scoreLevelText}} </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="NeoDisplayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: NeoDisplayedColumns;"></tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-lg-6 mb-3">
+            <p class="font-weight-bold text-left text-white m-0 p-2" style="background-color: lightgreen">مقیاس O : باز بودن (Openness) گشودگی به تجارب جدید </p>
+            <div class="table-responsive">
+                <table mat-table class="w-100 text-left" [dataSource]="ODataSource">
+                    <ng-container matColumnDef="trait">
+                        <th mat-header-cell *matHeaderCellDef>مقیاس</th>
+                        <td mat-cell *matCellDef="let element">{{element.trait}}</td>
+                    </ng-container>
+
+                    <!--                    <ng-container matColumnDef="persianTrait">-->
+                    <!--                        <th mat-header-cell *matHeaderCellDef>عنوان فارسی</th>-->
+                    <!--                        <td mat-cell *matCellDef="let element">{{element.persianTrait}}</td>-->
+                    <!--                    </ng-container>-->
+
+                    <ng-container matColumnDef="score">
+                        <th mat-header-cell *matHeaderCellDef>مقدار</th>
+                        <td mat-cell *matCellDef="let element">{{element.score}}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="scoreLevelText">
+                        <th mat-header-cell *matHeaderCellDef></th>
+                        <td mat-cell *matCellDef="let element"> {{element.scoreLevelText}} </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="NeoDisplayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: NeoDisplayedColumns;"></tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-lg-6 mb-3 ">
+            <p class="font-weight-bold text-left text-white m-0 p-2" style="background-color: lightsalmon">مقیاس A : توافق (Agreeableness) سازگاری </p>
+            <div class="table-responsive">
+                <table mat-table class="w-100 text-left" [dataSource]="ADataSource">
+                    <ng-container matColumnDef="trait">
+                        <th mat-header-cell *matHeaderCellDef>مقیاس</th>
+                        <td mat-cell *matCellDef="let element">{{element.trait}}</td>
+                    </ng-container>
+
+                    <!--                    <ng-container matColumnDef="persianTrait">-->
+                    <!--                        <th mat-header-cell *matHeaderCellDef>عنوان فارسی</th>-->
+                    <!--                        <td mat-cell *matCellDef="let element">{{element.persianTrait}}</td>-->
+                    <!--                    </ng-container>-->
+
+                    <ng-container matColumnDef="score">
+                        <th mat-header-cell *matHeaderCellDef>مقدار</th>
+                        <td mat-cell *matCellDef="let element">{{element.score}}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="scoreLevelText">
+                        <th mat-header-cell *matHeaderCellDef></th>
+                        <td mat-cell *matCellDef="let element"> {{element.scoreLevelText}} </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="NeoDisplayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: NeoDisplayedColumns;"></tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <p class="font-weight-bold text-left text-white m-0 p-2" style="background-color: lightslategrey">مقیاس C : وجدانی بودن (Conscientiousness) مسؤولیت پذیری </p>
+            <div class="table-responsive">
+                <table mat-table class="w-100 text-left" [dataSource]="CDataSource">
+                    <ng-container matColumnDef="trait">
+                        <th mat-header-cell *matHeaderCellDef>مقیاس</th>
+                        <td mat-cell *matCellDef="let element">{{element.trait}}</td>
+                    </ng-container>
+
+                    <!--                    <ng-container matColumnDef="persianTrait">-->
+                    <!--                        <th mat-header-cell *matHeaderCellDef>عنوان فارسی</th>-->
+                    <!--                        <td mat-cell *matCellDef="let element">{{element.persianTrait}}</td>-->
+                    <!--                    </ng-container>-->
+
+                    <ng-container matColumnDef="score">
+                        <th mat-header-cell *matHeaderCellDef>مقدار</th>
+                        <td mat-cell *matCellDef="let element">{{element.score}}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="scoreLevelText">
+                        <th mat-header-cell *matHeaderCellDef></th>
+                        <td mat-cell *matCellDef="let element"> {{element.scoreLevelText}} </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="NeoDisplayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: NeoDisplayedColumns;"></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions style="direction: ltr">
+    <button mat-raised-button mat-dialog-close color="warn">بستن</button>
+</mat-dialog-actions>

@@ -1,0 +1,40 @@
+<mat-dialog-content>
+  <div class="row">
+    <div class="col-12 p-2" style="direction: rtl">
+      <div class="row">
+
+        <div class="tab col-lg-2 col-12 px-1">
+                    <span class="d-flex align-items-center">
+                        <mat-icon inline>person_outline</mat-icon>
+                        <button class="tablinks" (click)="openContent($event, 'agent-info')" id="defaultOpen">مشخصات معرف ازدواج</button>
+                    </span>
+            <span class="d-flex align-items-center">
+                        <mat-icon inline>cloud_upload</mat-icon>
+                        <button class="tablinks" (click)="openContent($event, 'upload-agent-picture')">آپلود تصویر معرف ازدواج</button>
+                    </span>
+
+          <span class="d-flex align-items-center">
+                        <mat-icon inline>cloud_upload</mat-icon>
+                        <button class="tablinks" (click)="openContent($event, 'upload-documents')">آپلود مدارک</button>
+                    </span>
+        </div>
+
+        <div class="col-lg-10 col-12 px-4">
+          <div id="agent-info" class="tabcontent">
+            <app-agent-info [agentData]="data" (newAgentInfo)="newAgentInfo($event)" (agentMode)="agentMode($event)"></app-agent-info>
+          </div>
+            <div id="upload-agent-picture" class="tabcontent">
+                <app-upload-agent-picture [agentData]="data"></app-upload-agent-picture>
+            </div>
+          <div id="upload-documents" class="tabcontent">
+            <app-upload-documents [agentData]="data"></app-upload-documents>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions style="direction: ltr">
+  <button mat-raised-button mat-dialog-close color="warn" (click)="oncloseDialog()">بستن</button>
+</mat-dialog-actions>

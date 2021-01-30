@@ -1,0 +1,14 @@
+<div *ngIf="agentData">
+    <div class="row">
+        <div class="col-12 d-flex flex-wrap flex-row mb-3 justify-content-start align-items-end">
+            <img [src]="imagePath" width="300" height="300">
+            <button (click)="fileInputHandle($event)" mat-raised-button color="primary" class="ml-4">
+                <span>آپلود تصویر معرف ازدواج</span>
+                <input id="fileInput" type="file" (change)="onFileInput($event)" style="display:none;"/>
+            </button>
+        </div>
+    </div>
+</div>
+<div *ngIf="!agentData">
+    <h3 class="text-center text-info">جهت آپلود تصویر معرف ازدواج ابتدا آن را از تب مشخصات معرف ازدواج ایجاد نمایید</h3>
+</div>

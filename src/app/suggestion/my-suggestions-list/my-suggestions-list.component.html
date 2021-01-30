@@ -1,0 +1,185 @@
+<div class="row pl-3">
+  <h4 class="ml-5 bold">پیشنهاد های من</h4>
+</div>
+<div class="row">
+  <div class="col-12" *ngIf="!closeSearchSetting">
+    <div class="card">
+      <div class="card-content">
+        <div class="card-body">
+          <div class="text-right text-muted">
+            <button mat-icon-button *ngIf="showSearchPanel" (click)="slide()">
+              <mat-icon class="font-medium-3" inline>expand_less</mat-icon>
+            </button>
+            <button mat-icon-button *ngIf="!showSearchPanel" (click)="slide()">
+              <mat-icon class="font-medium-2" inline>expand_more</mat-icon>
+            </button>
+            <button mat-icon-button>
+              <mat-icon class="font-medium-2" inline (click)="resetSearchPanel()">refresh</mat-icon>
+            </button>
+            <button mat-icon-button>
+              <mat-icon class="font-medium-2" inline (click)="closeSearchSetting = true">
+                close
+              </mat-icon>
+            </button>
+          </div>
+          <div class="searchPanel">
+            <form [formGroup]="mySuggestionsListForm" (ngSubmit)="searchMySuggestions()">
+              <div class="row align-middle">
+                <div class="col-lg-4 col-12">
+                  <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>نام،نام خانوادگی،شماره همراه</mat-label>
+                    <input matInput type="text"
+                           formControlName="SearchValue">
+                    <mat-icon *ngIf="this.mySuggestionsListForm.controls.SearchValue.value" matSuffix color="warn" class="cursor-pointer"
+                              (click)="resetControl($event,'SearchValue','input')">close
+                    </mat-icon>
+
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-4 col-12">
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>محل سکونت کاربر</mat-label>
+                    <mat-select formControlName="MatePlaceOfResidenceCityIds" [multiple]="true">
+                      <mat-option>
+                        <ngx-mat-select-search
+                                placeholderLabel="جستجو محل سکونت"
+                                noEntriesFoundLabel="موردی یافت نشد"
+                                formControlName="mateCityFilterCtrl"
+                        >
+                        </ngx-mat-select-search>
+                      </mat-option>
+                      <mat-option *ngFor="let city of mateFilteredCities | async" [value]="city">
+                        {{city.name}}
+                      </mat-option>
+                    </mat-select>
+                    <div matSuffix *ngIf="this.mySuggestionsListForm.controls.MatePlaceOfResidenceCityIds.value
+                                        && this.mySuggestionsListForm.controls.MatePlaceOfResidenceCityIds.value.length > 0"
+                         (click)="resetControl($event,'MatePlaceOfResidenceCityIds')">
+                    <mat-icon color="warn">clear</mat-icon>
+                    </div>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-lg-4 col-12">
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>محل سکونت کاربر پیشنهاد شده</mat-label>
+                    <mat-select formControlName="SuggestedPlaceOfResidenceCityIds" [multiple]="true">
+                      <mat-option>
+                        <ngx-mat-select-search
+                                placeholderLabel="جستجو محل سکونت"
+                                noEntriesFoundLabel="موردی یافت نشد"
+                                formControlName="suggestedCityFilterCtrl"
+                        >
+                        </ngx-mat-select-search>
+                      </mat-option>
+                      <mat-option *ngFor="let city of suggestedFilteredCities | async" [value]="city">
+                        {{city.name}}
+                      </mat-option>
+                    </mat-select>
+                    <div matSuffix *ngIf="this.mySuggestionsListForm.controls.SuggestedPlaceOfResidenceCityIds.value
+                                        && this.mySuggestionsListForm.controls.SuggestedPlaceOfResidenceCityIds.value.length > 0"
+                         (click)="resetControl($event,'SuggestedPlaceOfResidenceCityIds')">
+                    <mat-icon color="warn">clear</mat-icon>
+                    </div>
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-4 col-12">
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>وضعیت تخصیص</mat-label>
+                    <mat-select formControlName="AssignmentStatuses" multiple>
+                      <app-select-check-all [model]="mySuggestionsListForm.controls.AssignmentStatuses" [values]="suggestionAgentAssignmentStatus"></app-select-check-all>
+                      <mat-option *ngFor="let AssignmentStatuse of suggestionAgentAssignmentStatus" [value]="AssignmentStatuse">
+                        {{AssignmentStatuse.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                    <div matSuffix *ngIf="this.mySuggestionsListForm.controls.AssignmentStatuses.value && this.mySuggestionsListForm.controls.AssignmentStatuses.value.length > 0"
+                         (click)="resetControl($event,'AssignmentStatuses')">
+                      <mat-icon color="warn">clear</mat-icon>
+                    </div>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-lg-4 col-12 my-2 mr-auto">
+                  <button type="submit" mat-raised-button class="gradient-nepal white btn-block">فیلتر
+                    نتایج
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row" *ngIf="showTable">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-content">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table mat-table [dataSource]="dataSource" class="w-100">
+
+              <ng-container matColumnDef="mateFullName">
+                <th mat-header-cell *matHeaderCellDef> نام و نام خانوادگی کاربر</th>
+                <td mat-cell *matCellDef="let element"> {{element.mateFirstname}} {{element.mateLastname}}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="matePlace">
+                <th mat-header-cell *matHeaderCellDef>محل سکونت کاربر</th>
+                <td mat-cell *matCellDef="let element"> {{element.matePlaceOfResidenceProvinceName}}- {{element.matePlaceOfResidenceCityName}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="suggestedFullName">
+                <th mat-header-cell *matHeaderCellDef> نام و نام خانوادگی کاربر پشنهاد شده</th>
+                <td mat-cell *matCellDef="let element"> {{element.suggestedFirstname}} {{element.suggestedLastname}}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="suggestedPlace">
+                <th mat-header-cell *matHeaderCellDef>محل سکونت کاربر پیشنهاد شده</th>
+                <td mat-cell *matCellDef="let element"> {{element.suggestedPlaceOfResidenceProvinceName}}- {{element.suggestedPlaceOfResidenceCityName}} </td>
+              </ng-container>
+
+<!--              <ng-container matColumnDef="statusText">-->
+<!--                <th mat-header-cell *matHeaderCellDef>وضعیت</th>-->
+<!--                <td mat-cell *matCellDef="let element"> {{element.statusText}}</td>-->
+<!--              </ng-container>-->
+
+              <ng-container matColumnDef="agentAssignmentStatusText">
+                <th mat-header-cell *matHeaderCellDef>وضعیت تخصیص</th>
+                <td mat-cell *matCellDef="let element"> {{element.agentAssignmentStatusText}}</td>
+              </ng-container>
+
+
+              <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> عملیات</th>
+                <td mat-cell *matCellDef="let element" class="action-link">
+                  <button mat-icon-button (click)="showSuggestionDetail($event,element)" matTooltip="مشاهده">
+                    <mat-icon inline class="font-medium-3">remove_red_eye</mat-icon>
+                  </button>
+                  <button mat-icon-button (click)="unAssignSuggestion($event , element)" matTooltip="عدم تخصیص">
+                    <mat-icon inline class="font-medium-3">undo</mat-icon>
+                  </button>
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            </table>
+            <mat-paginator showFirstLastButtons appStylePaginator (returnCurrentPage)="returnCurrentPage($event)"
+                           [length]="len"
+                           [pageSize]="pageSize"
+                           [pageSizeOptions]="[5,10,20]"
+                           (page)="pageEvent = $event ; onPaginateChange($event)">
+            </mat-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

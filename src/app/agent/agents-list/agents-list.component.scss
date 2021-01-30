@@ -1,0 +1,37 @@
+/deep/ {
+  #mat-input-2 {
+    font-family: YekiFaNum !important;
+    padding-right: 45px !important;
+  }
+  #mat-checkbox-1 {
+    //margin-right: 16px !important;
+  }
+}
+
+
+.mat-mini-fab.mat-custom-page.ng-star-inserted {
+  box-shadow: unset;
+  font-family: YekiFaNum, serif !important;
+  line-height: 40px !important;
+  margin-bottom: -3px !important;
+}
+
+.mat-mini-fab[disabled][disabled] {
+  background: green !important;
+  color: white !important;
+}
+
+.custom-delete {
+  line-height: 49px !important;
+  color: red !important;
+}
+
+.custom-delete:hover {
+  display: unset !important;
+}
+
+.custom-delete:hover .mat-icon {
+  line-height: 0;
+}
+
+

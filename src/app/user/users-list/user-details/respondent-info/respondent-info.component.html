@@ -1,0 +1,48 @@
+<div class="table-responsive">
+    <table mat-table class="w-100 text-left" [dataSource]="dataSource">
+        <ng-container matColumnDef="testType">
+            <th mat-header-cell *matHeaderCellDef>نوع آزمون</th>
+            <td mat-cell *matCellDef="let element">{{element.testType}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef>عنوان آزمون</th>
+            <td mat-cell *matCellDef="let element">{{element.title}}</td>
+        </ng-container>
+
+<!--        <ng-container matColumnDef="isActive">-->
+<!--            <th mat-header-cell *matHeaderCellDef>فعال</th>-->
+<!--            <td mat-cell *matCellDef="let element">-->
+<!--                <mat-icon color="primary" *ngIf="element.isActive">done</mat-icon>-->
+<!--                <mat-icon color="warn" *ngIf="!element.isActive">clear</mat-icon>-->
+<!--            </td>-->
+<!--        </ng-container>-->
+
+        <ng-container matColumnDef="resultStatus">
+            <th mat-header-cell *matHeaderCellDef>وضعیت نتیجه</th>
+            <td mat-cell *matCellDef="let element"> {{element.resultStatusText}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="completionDate">
+            <th mat-header-cell *matHeaderCellDef>تاریخ انجام</th>
+            <td mat-cell *matCellDef="let element"> {{element.completionDate}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> عملیات</th>
+            <td mat-cell *matCellDef="let element" class="action-link">
+                <button mat-icon-button (click)="viewDetail($event , element)" matTooltip="مشاهده جزئیات">
+                    <mat-icon inline class="font-medium-3">remove_red_eye</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator showFirstLastButtons [pageSizeOptions]="[5,10,20]"></mat-paginator>
+</div>
+
+
+
+

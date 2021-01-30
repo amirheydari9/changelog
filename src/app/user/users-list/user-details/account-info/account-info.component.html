@@ -1,0 +1,179 @@
+<form [formGroup]="accountInfoForm">
+    <div class="row">
+        <!--        <div class="col-12 d-flex flex-wrap mb-3 justify-content-start align-baseline">-->
+        <!--            <div>-->
+        <!--                <img src="" width="75" height="75" class="mr-4">-->
+        <!--            </div>-->
+        <!--            <div class="d-flex flex-column">-->
+        <!--                <span><p class="text-left text-bold">احمد آزاد</p></span>-->
+        <!--                <button mat-raised-button color="primary">تغییر عکس پروفایل</button>-->
+        <!--            </div>-->
+        <!--            <div class="d-flex flex-column justify-content-end ml-3">-->
+        <!--                <button mat-stroked-button color="warn" class="shadow-sm border-danger">پاک کردن عکس پروفایل</button>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>کد متقاضی</mat-label>
+                <input matInput type="text" formControlName="shortCode" class="shortCode">
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>نام</mat-label>
+                <input matInput type="text" formControlName="firstname">
+                <mat-error *ngIf="errorHandling('firstname', 'required')">نام اجباری است</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>نام خانوادگی</mat-label>
+                <input matInput type="text" formControlName="lastname">
+                <mat-error *ngIf="errorHandling('lastname', 'required')">نام خانوادگی اجباری است</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>جنسیت</mat-label>
+                <input matInput type="text" formControlName="gender">
+            </mat-form-field>
+        </div>
+<!--        <div class="col-lg-4 col-12">-->
+<!--            <mat-form-field appearance="outline" class="w-100">-->
+<!--                <mat-label>تاریخ تولد</mat-label>-->
+<!--                <input matInput type="text" formControlName="birthday">-->
+<!--            </mat-form-field>-->
+<!--        </div>-->
+
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>تاریخ تولد</mat-label>
+                <input matInput [matDatepicker]="picker2" formControlName="birthday" readonly>
+                <mat-datepicker #picker2></mat-datepicker>
+                <span class="d-flex align-items-center">
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                </span>
+
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>کد ملی</mat-label>
+                <input matInput type="text" formControlName="nationalID" mask="0000000000">
+                <mat-error *ngIf="errorHandling('nationalID', 'required')">کد ملی اجباری است</mat-error>
+                <mat-error *ngIf="errorHandling('nationalID', 'validNationalId')">کد ملی نامعتبر است</mat-error>
+            </mat-form-field>
+        </div>
+<!--        <div class="col-lg-4 col-12">-->
+<!--            <mat-form-field appearance="outline" class="w-100">-->
+<!--                <mat-label>تلفن همراه</mat-label>-->
+<!--                <input matInput type="text" formControlName="mobile" mask="00000000000">-->
+<!--                <mat-error *ngIf="errorHandling('mobile', 'required')">موبایل اجباری است</mat-error>-->
+<!--                <mat-error *ngIf="errorHandling('mobile', 'validMobile')">موبایل معتبر نمی باشد</mat-error>-->
+<!--            </mat-form-field>-->
+<!--        </div>-->
+<!--        <div class="col-lg-4 col-12">-->
+<!--            <mat-form-field appearance="outline" class="w-100">-->
+<!--                <mat-label>اصلیت</mat-label>-->
+<!--                <input matInput type="text" formControlName="originality">-->
+<!--            </mat-form-field>-->
+<!--        </div>-->
+<!--        <div class="col-lg-4 col-12">-->
+<!--            <mat-form-field appearance="outline" class="w-100">-->
+<!--                <mat-label> استان محل تولد</mat-label>-->
+<!--                <input matInput type="text" formControlName="placeOfBirthProvinceName">-->
+<!--            </mat-form-field>-->
+<!--        </div>-->
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>استان محل تولد</mat-label>
+                <mat-select formControlName="placeOfBirthProvinceId">
+                    <mat-option>
+                        <ngx-mat-select-search
+                                placeholderLabel="جستجو استان تولد"
+                                noEntriesFoundLabel="موردی یافت نشد"
+                                formControlName="provinceFilterCtrl"
+                        >
+                        </ngx-mat-select-search>
+                    </mat-option>
+                    <mat-option *ngFor="let province of filteredProvinces | async" [value]="province">
+                        {{province.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+<!--        <div class="col-lg-4 col-12">-->
+<!--            <mat-form-field appearance="outline" class="w-100">-->
+<!--                <mat-label>شهر محل تولد</mat-label>-->
+<!--                <input matInput type="text" formControlName="placeOfBirthCityName">-->
+<!--            </mat-form-field>-->
+<!--        </div>-->
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>شهر محل تولد</mat-label>
+                <mat-select formControlName="placeOfBirthCityId">
+                    <mat-option>
+                        <ngx-mat-select-search
+                                placeholderLabel="جستجو شهر تولد"
+                                noEntriesFoundLabel="موردی یافت نشد"
+                                formControlName="cityFilterCtrl"
+                        >
+                        </ngx-mat-select-search>
+                    </mat-option>
+                    <mat-option *ngFor="let city of filteredCities | async" [value]="city">
+                        {{city.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>لیست گرو ها</mat-label>
+                <mat-select formControlName="groupId">
+                    <mat-option>
+                        <ngx-mat-select-search
+                                placeholderLabel="جستجو گروه"
+                                noEntriesFoundLabel="موردی یافت نشد"
+                                formControlName="groupFilterCtrl"
+                        >
+                        </ngx-mat-select-search>
+                    </mat-option>
+                    <mat-option *ngFor="let group of filteredGroups | async" [value]="group">
+                        {{group.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+<!--        <div class="col-lg-4 col-12">-->
+<!--            <mat-form-field appearance="outline" class="w-100">-->
+<!--                <mat-label>دین / مذهب</mat-label>-->
+<!--                <input matInput type="text" formControlName="religion">-->
+<!--            </mat-form-field>-->
+<!--        </div>-->
+
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>دین / مذهب</mat-label>
+                <mat-select formControlName="religion">
+                    <mat-option *ngFor="let type of religionTypes" [value]="type.value">
+                        {{type.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="col-lg-4 col-12 text-left">
+            <mat-label class="font-small-2">در پیشنهاد ها نام نمایش داده شود</mat-label>
+            <mat-slide-toggle formControlName="firstnameProfileVisibility" class="w-100 mt-2"></mat-slide-toggle>
+        </div>
+
+        <div class="col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>توضیحات دین / مذهب</mat-label>
+                <textarea matInput matTextareaAutosize="false" formControlName="religionDescription"></textarea>
+            </mat-form-field>
+        </div>
+
+    </div>
+</form>
+

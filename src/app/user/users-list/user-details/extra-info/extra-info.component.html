@@ -1,0 +1,40 @@
+<form [formGroup]="extraInfoForm">
+    <div class="row">
+        <div class="col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>مهارت های علمی (میزان آشنایی با زبان ها و ...)</mat-label>
+                <textarea matInput matTextareaAutosize="false" formControlName="scientificSkills"></textarea>
+            </mat-form-field>
+        </div>
+        <div class="col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>مهارت های هنری (خیاطی ، آرایشگری ، شعر و ...)</mat-label>
+                <textarea matInput matTextareaAutosize="false" formControlName="artisticSkills"></textarea>
+            </mat-form-field>
+        </div>
+        <div class="col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>مهارت های فنی (نجاری ، لوله کشی و ...)</mat-label>
+                <textarea matInput matTextareaAutosize="false" formControlName="technicalSkills"></textarea>
+            </mat-form-field>
+        </div>
+        <div class="col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>مهارت های ورزشی</mat-label>
+                <textarea matInput matTextareaAutosize="false" formControlName="athleticSkills"></textarea>
+            </mat-form-field>
+        </div>
+        <div class="col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>علایق و سرگرمی ها</mat-label>
+                <textarea matInput matTextareaAutosize="false" formControlName="interestsAndHobbies"></textarea>
+            </mat-form-field>
+        </div>
+        <div class="col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>درباره من</mat-label>
+                <textarea matInput matTextareaAutosize="false" formControlName="aboutMe"></textarea>
+            </mat-form-field>
+        </div>
+    </div>
+</form>

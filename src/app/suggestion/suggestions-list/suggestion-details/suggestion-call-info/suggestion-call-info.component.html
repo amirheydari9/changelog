@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-12 p-2" style="direction: rtl">
+    <app-suggestion-header [suggestionInfo]="suggestionInfo"></app-suggestion-header>
+
+        <div class="text-left">
+          <div *ngFor="let data of applicantData">
+            <p class="col-12 w-100 bg-secondary text-white font-weight-bold p-2">{{data.title}}</p>
+            <div class="row">
+              <p class="col-6 px-4 font-weight-bold text-center">{{data.mateInfo}}</p>
+              <p class="col-6 px-4 font-weight-bold text-center">{{data.suggestedInfo}}</p>
+            </div>
+          </div>
+        </div>
+  </div>
+</div>

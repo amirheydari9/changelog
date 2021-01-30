@@ -1,0 +1,83 @@
+
+<form [formGroup]="uploadDocumentsForm" (ngSubmit)="uploadDocument()" *ngIf="isTebyanAdmin">
+    <div class="row">
+        <div class="col-lg-6 col-12 d-flex align-items-end">
+            <img [src]="imagePath" width="100" height="100">
+            <input type="file" (change)="onFileChanged($event)"/>
+        </div>
+        <div class="col-lg-6 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>نوع مدرک</mat-label>
+                <mat-select formControlName="documentType">
+                    <mat-option *ngFor="let documentType of documentTypes" [value]="documentType.value">
+                        {{documentType.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-12 mt-2">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>توضیحات</mat-label>
+                <input matInput type="text" formControlName="description">
+            </mat-form-field>
+        </div>
+        <div class="col-12">
+            <button mat-raised-button class="mt-0 btn btn-success text-white" type="submit"
+                    [disabled]="!uploadDocumentsForm.valid">
+                <span>ثبت</span>
+            </button>
+        </div>
+    </div>
+</form>
+
+<div class="table-responsive">
+    <table mat-table class="w-100 text-left" [dataSource]="dataSource">
+        <ng-container matColumnDef="image">
+            <th mat-header-cell *matHeaderCellDef>تصویر</th>
+            <td mat-cell *matCellDef="let element">
+                <a href="{{element.fileUrlPath}}" download>
+                    <img src="{{element.fileUrlPath}}" width="70" height="70" class="p-1">
+                </a>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="documentType">
+            <th mat-header-cell *matHeaderCellDef>نوع مدرک</th>
+            <td mat-cell *matCellDef="let element">{{element.documentTypeText}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef>توضیحات</th>
+            <td mat-cell *matCellDef="let element">{{element.description}}</td>
+        </ng-container>
+
+<!--        <ng-container matColumnDef="approved">-->
+<!--            <th mat-header-cell *matHeaderCellDef>تایید شده</th>-->
+<!--            <td mat-cell *matCellDef="let element">{{element.approved ? 'بله' : 'خیر'}}</td>-->
+<!--        </ng-container>-->
+
+<!--        <ng-container matColumnDef="approvementDecription">-->
+<!--            <th mat-header-cell *matHeaderCellDef>توضیحات تایید مدرک</th>-->
+<!--            <td mat-cell *matCellDef="let element">{{element.approvementDecription}}</td>-->
+<!--        </ng-container>-->
+
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> عملیات</th>
+            <td mat-cell *matCellDef="let element" class="action-link">
+                <button mat-icon-button (click)="deleteDocument($event , element)" matTooltip="حذف کردن" *ngIf="isTebyanAdmin">
+                    <mat-icon inline class="font-medium-3">delete</mat-icon>
+                </button>
+                <a href="{{element.fileUrlPath}}" download>
+                    <button mat-icon-button matTooltip="دانلود">
+                        <mat-icon inline class="font-medium-3">cloud_download</mat-icon>
+                    </button>
+                </a>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator showFirstLastButtons [pageSizeOptions]="[5,10,20]"></mat-paginator>
+</div>
+

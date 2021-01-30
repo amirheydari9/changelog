@@ -1,0 +1,62 @@
+<form [formGroup]="economicStatusInfoForm">
+  <div class="row">
+    <div class="col-lg-4 col-12">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>وضعیت اقتصادی خانواده</mat-label>
+        <mat-select formControlName="familySocioeconomicStatus">
+          <mat-option *ngFor="let economicSituation of economicSituations" [value]="economicSituation.value">
+            {{economicSituation.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-lg-4 col-12">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>وضعیت محل سکونت خانوادگی</mat-label>
+        <mat-select formControlName="familyHomeOwnershipStatus">
+          <mat-option *ngFor="let familyHomeOwnershipStatus of homeOwnershipStatuses" [value]="familyHomeOwnershipStatus.value">
+            {{familyHomeOwnershipStatus.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-lg-4 col-12 text-left">
+      <mat-label class="font-small-2">منزل شخصی دارد</mat-label>
+      <mat-slide-toggle formControlName="hasAPrivateHouse" class="w-100 mt-2"></mat-slide-toggle>
+    </div>
+    <div class="col-lg-4 col-12">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>متوسط درآمد ماهیانه(تومان)</mat-label>
+        <mat-select formControlName="monthlyAverageIncome">
+          <mat-option *ngFor="let incomType of incomTypes" [value]="incomType.value">
+            {{incomType.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-lg-4 col-12">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>پس انداز</mat-label>
+        <mat-select formControlName="wealth">
+          <mat-option *ngFor="let wealthType of wealthTypes" [value]="wealthType.value">
+            {{wealthType.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-12">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label> توضیحات وضعیت اقتصادی خانواده</mat-label>
+        <textarea matInput matTextareaAutosize="false" formControlName="familySocioeconomicDescription"></textarea>
+      </mat-form-field>
+    </div>
+    <div class="col-12">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label> توضیحات مشخصات اقتصادی</mat-label>
+        <textarea matInput matTextareaAutosize="false" formControlName="economicsDescription"></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+</form>
+
+

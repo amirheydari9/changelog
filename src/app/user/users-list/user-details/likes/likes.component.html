@@ -1,0 +1,133 @@
+<form [formGroup]="likesForm">
+    <div class="row">
+        <div class="col-12 text-left" *ngIf="isTebyanAdmin">
+            <mat-label class="font-small-2">سال تولد طرف مقابل</mat-label>
+            <ng5-slider formControlName="matchmakingBirthYear" [options]="birthdayOptions" style="direction: ltr"></ng5-slider>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100" *ngIf="!isTebyanAdmin">
+                <mat-label>سال تولد طرف مقابل</mat-label>
+                <input matInput type="text" readonly
+                       [value]="' بین '+likesForm.controls.matchmakingMinimumBirthYear.value + ' و '+ likesForm.controls.matchmakingMaximumBirthYear.value">
+            </mat-form-field>
+        </div>
+        <div class="col-12 text-left" *ngIf="isTebyanAdmin">
+            <mat-label class="font-small-2">وزن طرف مقابل (کیلوگرم)</mat-label>
+            <ng5-slider formControlName="matchmakingWeight" [options]="weightOptions" style="direction: ltr"></ng5-slider>
+        </div>
+        <div class="col-lg-4 col-12 text-left" *ngIf="!isTebyanAdmin">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>وزن طرف مقابل (کیلوگرم)</mat-label>
+                <input matInput type="text" readonly
+                       [value]="' بین '+likesForm.controls.matchmakingMinimumWeight.value + ' و '+ likesForm.controls.matchmakingMaximumWeight.value">
+            </mat-form-field>
+        </div>
+        <div class="col-12 text-left mb-2" *ngIf="isTebyanAdmin">
+            <mat-label class="font-small-2">قد طرف مقابل (سانتی متر)</mat-label>
+            <ng5-slider formControlName="matchmakingHeight" [options]="heightOptions" style="direction: ltr"></ng5-slider>
+        </div>
+        <div class="col-lg-4 col-12 text-left" *ngIf="!isTebyanAdmin">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>قد طرف مقابل (سانتی متر)</mat-label>
+                <input matInput type="text" readonly
+                       [value]="' بین '+likesForm.controls.matchmakingMinimumHeight.value + ' و '+ likesForm.controls.matchmakingMaximumHeight.value">
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>رنگ پوست طرف مقابل</mat-label>
+                <mat-select formControlName="matchmakingSkinColors" multiple>
+                    <app-select-check-all [model]="likesForm.controls.matchmakingSkinColors"
+                                          [values]="matchmakingSkinColors"></app-select-check-all>
+                    <mat-option *ngFor="let matchmakingSkinColor of matchmakingSkinColors"
+                                [value]="matchmakingSkinColor">
+                        {{matchmakingSkinColor.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>رنگ چشم طرف مقابل</mat-label>
+                <mat-select formControlName="matchmakingEyeColors" multiple>
+                    <app-select-check-all [model]="likesForm.controls.matchmakingEyeColors"
+                                          [values]="matchmakingEyeColors"></app-select-check-all>
+                    <mat-option *ngFor="let matchmakingEyeColor of matchmakingEyeColors" [value]="matchmakingEyeColor">
+                        {{matchmakingEyeColor.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>تناسب اندام طرف مقابل</mat-label>
+                <mat-select formControlName="matchmakingBodyWeightCategories" multiple>
+                    <app-select-check-all [model]="likesForm.controls.matchmakingBodyWeightCategories"
+                                          [values]="matchmakingBodyWeightCategories"></app-select-check-all>
+                    <mat-option *ngFor="let matchmakingBodyWeightCategory of matchmakingBodyWeightCategories"
+                                [value]="matchmakingBodyWeightCategory">
+                        {{matchmakingBodyWeightCategory.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>تحصیلات طرف مقابل</mat-label>
+                <mat-select formControlName="matchmakingEducationalStages" multiple>
+                    <app-select-check-all [model]="likesForm.controls.matchmakingEducationalStages"
+                                          [values]="matchmakingEducationSections"></app-select-check-all>
+                    <mat-option *ngFor="let matchmakingEducationSection of matchmakingEducationSections"
+                                [value]="matchmakingEducationSection">
+                        {{matchmakingEducationSection.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>وضعیت تاهل طرف مقابل</mat-label>
+                <mat-select formControlName="matchmakingMaritalStatuses" multiple>
+                    <app-select-check-all [model]="likesForm.controls.matchmakingMaritalStatuses"
+                                          [values]="matchmakingMaritalStatuses"></app-select-check-all>
+                    <mat-option *ngFor="let matchmakingMaritalStatus of matchmakingMaritalStatuses"
+                                [value]="matchmakingMaritalStatus">
+                        {{matchmakingMaritalStatus.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="col-lg-4 col-12 text-left">
+            <mat-label class="font-small-2">فرزند طرف مقابل می پذیرم</mat-label>
+            <mat-slide-toggle formControlName="matchmakingAcceptChildrenOfPartner" class="w-100 mt-2"></mat-slide-toggle>
+        </div>
+
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>وضعیت پوشش طرف مقابل</mat-label>
+                <mat-select formControlName="matchmakingClothingTypes" multiple>
+                    <app-select-check-all [model]="likesForm.controls.matchmakingClothingTypes"
+                                          [values]="matchmakingClothingTypes"></app-select-check-all>
+                    <mat-option *ngFor="let matchmakingClothingType of matchmakingClothingTypes"
+                                [value]="matchmakingClothingType">
+                        {{matchmakingClothingType.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>توضیحات خواسته ها</mat-label>
+                <textarea matInput matTextareaAutosize="false" formControlName="matchmakingDescription"></textarea>
+            </mat-form-field>
+        </div>
+
+    </div>
+</form>
+

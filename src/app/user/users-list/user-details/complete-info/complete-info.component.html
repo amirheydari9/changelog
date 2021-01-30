@@ -1,0 +1,92 @@
+<form [formGroup]="completeInfoForm">
+    <div class="row">
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>چندمین فرزند خانواده</mat-label>
+                <input matInput type="text" formControlName="birthOrder" mask="99">
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>تقیدات مذهبی</mat-label>
+                <mat-select formControlName="religiousPractice">
+                    <mat-option *ngFor="let level of religiousPractice" [value]="level.value">
+                        {{level.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12 text-left">
+            <mat-label class="font-small-2">مصرف دخانیات</mat-label>
+            <mat-slide-toggle formControlName="smoking" class="w-100 mt-2"></mat-slide-toggle>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>اصلیت خانوادگی</mat-label>
+                <input matInput type="text" formControlName="originality">
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>اهل گوش دادن موسیقی</mat-label>
+                <mat-select formControlName="listeningToMusicStatus">
+                    <mat-option *ngFor="let status of listeningToMusicStatus" [value]="status.value">
+                        {{status.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>تمایل به زندگی در خارج از کشور</mat-label>
+                <mat-select formControlName="livingAbroadTendency">
+                    <mat-option *ngFor="let status of livingAbroadTendency" [value]="status.value">
+                        {{status.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>وضعیت تاهل</mat-label>
+                <mat-select formControlName="maritalStatus">
+                    <mat-option *ngFor="let status of maritalStatus" [value]="status.value">
+                        {{status.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>مدت زمان زندگی مشترک</mat-label>
+                <mat-select formControlName="livingTogetherDuration">
+                    <mat-option *ngFor="let duration of livingTogetherDuration" [value]="duration.value">
+                        {{duration.viewValue}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="errorHandling('livingTogetherDuration', 'required')">مدت زمان زندگی مشترک اجباری است</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>تعداد فرزندان</mat-label>
+                <input matInput type="text" formControlName="childrenCount" mask="99">
+                <mat-error *ngIf="errorHandling('childrenCount', 'required')">تعداد فرزندان اجباری است</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>توضیحات در مورد اعضا خانواده</mat-label>
+                <textarea matInput matTextareaAutosize="false" formControlName="familyMembersDescription"></textarea>
+            </mat-form-field>
+        </div>
+        <div class="col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>توضیحات جانبی</mat-label>
+                <textarea matInput matTextareaAutosize="false" formControlName="supplementaryDescription"></textarea>
+            </mat-form-field>
+        </div>
+    </div>
+</form>
+
+

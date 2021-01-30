@@ -1,0 +1,84 @@
+<form [formGroup]="callInfoForm">
+    <div class="row">
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>پیش شماره تلفن ثابت</mat-label>
+                <input matInput type="text" formControlName="telephoneNumberAreaCode" mask="000">
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>تلفن ثابت</mat-label>
+                <input matInput type="text" formControlName="telephoneNumber">
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>تلفن همراه</mat-label>
+                <input matInput type="text" formControlName="mobile" mask="00000000000">
+                <mat-error *ngIf="errorHandling('mobile', 'required')">موبایل اجباری است</mat-error>
+                <mat-error *ngIf="errorHandling('mobile', 'validMobile')">موبایل معتبر نمی باشد</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>ایمیل</mat-label>
+                <input matInput type="text" formControlName="email">
+                <mat-error *ngIf="errorHandling('email', 'email')">ایمیل نامعتبر است</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label> استان محل سکونت</mat-label>
+                <mat-select formControlName="placeOfResidenceProvinceId">
+                    <mat-option>
+                        <ngx-mat-select-search
+                                placeholderLabel="جستجو محل سکونت"
+                                noEntriesFoundLabel="موردی یافت نشد"
+                                formControlName="provinceFilterCtrl"
+                        >
+                        </ngx-mat-select-search>
+                    </mat-option>
+                    <mat-option *ngFor="let province of filteredProvinces | async" [value]="province">
+                        {{province.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label> شهر محل سکونت</mat-label>
+                <mat-select formControlName="placeOfResidenceCityId">
+                    <mat-option>
+                        <ngx-mat-select-search
+                                placeholderLabel="جستجو محل سکونت"
+                                noEntriesFoundLabel="موردی یافت نشد"
+                                formControlName="cityFilterCtrl"
+                        >
+                        </ngx-mat-select-search>
+                    </mat-option>
+                    <mat-option *ngFor="let city of filteredCities | async" [value]="city">
+                        {{city.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="col-lg-4 col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>کد پستی</mat-label>
+                <input matInput type="text" formControlName="zipCode">
+            </mat-form-field>
+        </div>
+        <div class="col-12">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>نشانی محل اقامت</mat-label>
+                <textarea matInput matTextareaAutosize="false" formControlName="address"></textarea>
+            </mat-form-field>
+        </div>
+    </div>
+</form>
+
+

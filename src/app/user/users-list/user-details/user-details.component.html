@@ -1,0 +1,122 @@
+<mat-dialog-content>
+    <div class="row">
+        <div class="col-12 p-2" style="direction: rtl">
+            <div class="row">
+
+                <div class="tab col-lg-2 col-12 px-1">
+                    <span class="d-flex align-items-center">
+                        <mat-icon inline>person_outline</mat-icon>
+                        <button class="tablinks" (click)="openContent($event, 'account-info')" id="defaultOpen">مشخصات فردی</button>
+                    </span>
+
+                    <span class="d-flex align-items-center">
+                        <mat-icon inline>phone_in_talk</mat-icon>
+                        <button class="tablinks" (click)="openContent($event, 'call-info')">اطلاعات تماس</button>
+                    </span>
+
+                    <span class="d-flex align-items-center">
+                        <mat-icon inline>music_note</mat-icon>
+                        <button class="tablinks"
+                                (click)="openContent($event, 'extra-info')">مهارت های فردی</button>
+                    </span>
+
+                    <span class="d-flex align-items-center">
+                        <mat-icon inline>school</mat-icon>
+                        <button class="tablinks" (click)="openContent($event, 'education-info')">تحصیلات</button>
+                    </span>
+
+                    <span class="d-flex align-items-center">
+                        <mat-icon inline>people_alt</mat-icon>
+                        <button class="tablinks" (click)="openContent($event, 'family-info')">مشخصات خانوادگی</button>
+                    </span>
+
+                    <span class="d-flex align-items-center">
+                        <mat-icon inline>work_outline</mat-icon>
+                        <button class="tablinks" (click)="openContent($event, 'job-info')">مشخصات شغلی</button>
+                    </span>
+
+                    <span class="d-flex align-items-center">
+                        <mat-icon inline>account_balance_wallet</mat-icon>
+                        <button class="tablinks"
+                                (click)="openContent($event, 'economic-status-info')">مشخصات اقتصادی</button>
+                    </span>
+
+                    <span class="d-flex align-items-center">
+                        <mat-icon inline>face</mat-icon>
+                        <button class="tablinks" (click)="openContent($event, 'personal-info')">مشخصات ظاهری</button>
+                    </span>
+
+                    <span class="d-flex align-items-center">
+                        <mat-icon inline>favorite_border</mat-icon>
+                        <button class="tablinks" (click)="openContent($event, 'likes')">خواسته ها</button>
+                    </span>
+
+                    <span class="d-flex align-items-center">
+                        <mat-icon inline>view_comfy</mat-icon>
+                        <button class="tablinks" (click)="openContent($event, 'complete-info')">مشخصات جانبی</button>
+                    </span>
+
+                    <span class="d-flex align-items-center">
+                        <mat-icon inline>analytics</mat-icon>
+                        <button class="tablinks" (click)="openContent($event, 'respondent-info')">آزمون ها</button>
+                    </span>
+
+                    <span class="d-flex align-items-center">
+                        <mat-icon inline>cloud_upload</mat-icon>
+                        <button class="tablinks" (click)="openContent($event, 'upload-file')">مدارک</button>
+                    </span>
+                </div>
+
+                <div class="col-lg-10 col-12 px-4">
+                    <div id="account-info" class="tabcontent">
+                        <app-account-info [userData]="data" [isTebyanAdmin]="TebyanAdmin" [isTebyanAdmin]="TebyanAdmin" (formHasError)="formHasError($event)" (userInfoChanged)="userInfoChanged($event)"></app-account-info>
+                    </div>
+                    <div id="call-info" class="tabcontent">
+                        <app-call-info [userData]="data" [isTebyanAdmin]="TebyanAdmin"  (formHasError)="formHasError($event)" (userInfoChanged)="userInfoChanged($event)"></app-call-info>
+                    </div>
+
+                    <div id="extra-info" class="tabcontent">
+                        <app-extra-info [userData]="data" [isTebyanAdmin]="TebyanAdmin"  (formHasError)="formHasError($event)" (userInfoChanged)="userInfoChanged($event)"></app-extra-info>
+                    </div>
+
+                    <div id="education-info" class="tabcontent">
+                        <app-education-info [userData]="data" [isTebyanAdmin]="TebyanAdmin"  (formHasError)="formHasError($event)" (userInfoChanged)="userInfoChanged($event)"></app-education-info>
+                    </div>
+
+                    <div id="family-info" class="tabcontent">
+                        <app-family-info [userData]="data" [isTebyanAdmin]="TebyanAdmin"></app-family-info>
+                    </div>
+                    <div id="job-info" class="tabcontent">
+                        <app-job-info [userData]="data" [isTebyanAdmin]="TebyanAdmin"  (formHasError)="formHasError($event)" (userInfoChanged)="userInfoChanged($event)"></app-job-info>
+                    </div>
+                    <div id="economic-status-info" class="tabcontent">
+                        <app-economic-status-info [userData]="data" [isTebyanAdmin]="TebyanAdmin"  (formHasError)="formHasError($event)" (userInfoChanged)="userInfoChanged($event)"></app-economic-status-info>
+                    </div>
+                    <div id="personal-info" class="tabcontent">
+                        <app-personal-info [userData]="data" [isTebyanAdmin]="TebyanAdmin"  (formHasError)="formHasError($event)" (userInfoChanged)="userInfoChanged($event)"></app-personal-info>
+                    </div>
+                    <div id="likes" class="tabcontent">
+                        <app-likes [userData]="data" [isTebyanAdmin]="TebyanAdmin"  (formHasError)="formHasError($event)" (userInfoChanged)="userInfoChanged($event)"></app-likes>
+                    </div>
+                    <div id="complete-info" class="tabcontent">
+                        <app-complete-info [userData]="data" [isTebyanAdmin]="TebyanAdmin"  (formHasError)="formHasError($event)" (userInfoChanged)="userInfoChanged($event)"></app-complete-info>
+                    </div>
+                    <div id="respondent-info" class="tabcontent">
+                        <app-respondent-info [userData]="data"></app-respondent-info>
+                    </div>
+                    <div id="upload-file" class="tabcontent">
+                        <app-upload-file [userData]="data" [isTebyanAdmin]="TebyanAdmin"></app-upload-file>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions class="flex-row-reverse float-right">
+    <button mat-raised-button mat-dialog-close color="warn" class="ml-2">بستن</button>
+    <button mat-raised-button color="primary" (click)="editUser()" [disabled]="!userInfo" *ngIf="TebyanAdmin">ویرایش کاربر</button>
+    <button *ngIf="(data.applicant.state == 1 || data.applicant.state == 3 || data.applicant.state == 5) && (data.completeness.isCompleted)"
+            mat-raised-button class="mr-2 bg-success text-white" (click)="verifyUser()">تایید کاربر
+    </button>
+</mat-dialog-actions>

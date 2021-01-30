@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs>
+    <style>
+      #Axis .line {
+        fill: none;
+        stroke: #05668d;
+        stroke-miterlimit: 10;
+        stroke-width: 2px;
+      }
+
+      #Axis .arrow {
+        fill: #05668d;
+      }
+
+      #Axis .title {
+        font-weight: bold;
+        font-size: 20px;
+        fill: #264653;
+      }
+
+      #QuadrantTopLeft .quadrant {
+        fill: #00bbf9;
+      }
+
+      #QuadrantTopRight .quadrant {
+        fill: #f4a261;
+      }
+
+      #QuadrantBottomLeft .quadrant {
+        fill: #ffd166;
+      }
+
+      #QuadrantBottomRight .quadrant {
+        fill: #00a896;
+      }
+
+      .quantity {
+        font-size: 15px;
+        fill: black;
+        opacity: 0.1;
+      }
+
+      .quadrant {
+        opacity: 0.5;
+      }
+
+      .active .quadrant, .active .quantity {
+        opacity: 1;
+      }
+    </style>
+  </defs>
+  <title>EPQ Interpretation</title>
+  <g id="QuadrantTopLeft" [ngClass]="{'active':quadrant==1}">
+    <path class="quadrant" d="M300,300H100c0-110.46,89.54-200,200-200Z" transform="translate(-10.7 -15.65)"/>
+    <text class="quantity" transform="translate(227.3 109.98)">دمدمی</text>
+    <text class="quantity" transform="translate(192.76 125.76)">مضطرب</text>
+    <text class="quantity" transform="translate(168.76 142.76)">خوددار</text>
+    <text class="quantity" transform="translate(143.76 161.76)">انعطاف ناپذیر</text>
+    <text class="quantity" transform="translate(129.76 180.76)">گاهی بدبین</text>
+    <text class="quantity" transform="translate(116.76 202.76)">مردم گریز</text>
+    <text class="quantity" transform="translate(108.76 225.76)">بی سرو صدا</text>
+    <text class="quantity" transform="translate(100.76 248.76)">احساس گناه</text>
+    <text class="quantity" transform="translate(97.76 268.76)">گاهی غمگین و تخیلی</text>
+  </g>
+  <g id="QuadrantTopRight" [ngClass]="{'active':quadrant==2}">
+    <path class="quadrant" d="M300,300V100c110.46,0,200,89.54,200,200Z" transform="translate(-10.7 -15.65)"/>
+    <text class="quantity" transform="translate(303.74 114.98)">زودرنج</text>
+    <text class="quantity" transform="translate(342.91 131.76)">بی قرار</text>
+    <text class="quantity" transform="translate(322.51 155.76)">گاهی پرخاشگر</text>
+    <text class="quantity" transform="translate(343.21 181.76)">رنگارنگ در رفتار</text>
+    <text class="quantity" transform="translate(354.15 207.81)">آنی و بدون فکر</text>
+    <text class="quantity" transform="translate(388.29 225.81)">عمل می‌کند</text>
+    <text class="quantity" transform="translate(382.86 251.81)">معمولا فعال و</text>
+    <text class="quantity" transform="translate(359.77 269.81)">پر انرژی اما آشفته</text>
+  </g>
+  <g id="QuadrantBottomLeft" [ngClass]="{'active':quadrant==3}">
+    <path class="quadrant" d="M300,300V500c-110.46,0-200-89.54-200-200Z" transform="translate(-10.7 -15.65)"/>
+    <text class="quantity" transform="translate(98.29 308.98)">با ثبات میانه رو</text>
+    <text class="quantity" transform="translate(102.76 334.76)">فعال در امور فردی</text>
+    <text class="quantity" transform="translate(116.76 361.76)">مسالمت آمیز</text>
+    <text class="quantity" transform="translate(130.76 386.76)">تأثیر پذیر</text>
+    <text class="quantity" transform="translate(146.76 411.76)">محتاط</text>
+    <text class="quantity" transform="translate(172.76 430.76)">فکور</text>
+    <text class="quantity" transform="translate(199.76 447.76)">آرام</text>
+    <text class="quantity" transform="translate(225.76 458.76)">بانظم</text>
+  </g>
+  <g id="QuadrantBottomRight" [ngClass]="{'active':quadrant==4}">
+    <path class="quadrant" d="M300,300H500c0,110.46-89.54,200-200,200Z" transform="translate(-10.7 -15.65)"/>
+    <text class="quantity" transform="translate(399.60 301.81)">فعال در امور</text>
+    <text class="quantity" transform="translate(363.49 319.81)">اجتماعی و گروهی</text>
+    <text class="quantity" transform="translate(370.13 343.76)">پیشگام در امور</text>
+    <text class="quantity" transform="translate(384.04 365.76)">حاضر جواب</text>
+    <text class="quantity" transform="translate(383.26 386.98)">مردم آمیز</text>
+    <text class="quantity" transform="translate(386.18 407.76)">پرحرف</text>
+    <text class="quantity" transform="translate(355.9 425.76)">بی خیال</text>
+    <text class="quantity" transform="translate(339.31 445.76)">سرزنده</text>
+    <text class="quantity" transform="translate(295.41 460.76)">معاشرتی</text>
+  </g>
+  <g id="Axis">
+    <g id="AxisHorizontal">
+      <line class="line" x1="53.48" y1="284.35" x2="525.13" y2="284.35"/>
+      <polygon class="arrow" points="56.65 288.99 39.3 284.35 56.65 279.7 56.65 288.99"/>
+      <polygon class="arrow" points="521.96 288.99 539.3 284.35 521.96 279.7 521.96 288.99"/>
+    </g>
+    <g id="AxisVertical">
+      <line class="line" x1="289.3" y1="48.52" x2="289.3" y2="520.17"/>
+      <polygon class="arrow" points="284.65 51.69 289.3 34.35 293.95 51.69 284.65 51.69"/>
+      <polygon class="arrow" points="284.65 517 289.3 534.35 293.95 517 284.65 517"/>
+    </g>
+    <text class="title" transform="translate(494.85 268.18)">برونگرایی</text>
+    <text class="title" transform="translate(-6.33 268.18)">درونگرایی</text>
+    <text class="title" transform="translate(211.08 18.18)">بی ثباتی هیجانی</text>
+    <text class="title" transform="translate(227.17 558.18)">ثبات هیجانی</text>
+  </g>
+</svg>
+

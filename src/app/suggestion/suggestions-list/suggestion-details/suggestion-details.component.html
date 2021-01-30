@@ -1,0 +1,132 @@
+<mat-dialog-content>
+    <div class="row">
+        <div class="col-12 p-2" style="direction: rtl">
+            <div class="row">
+
+                <div class="tab col-lg-2 col-12 px-1">
+                    <span class="d-flex align-items-center">
+                        <mat-icon inline>person_outline</mat-icon>
+                        <button class="tablinks" (click)="openContent($event, 'suggestion-account-info')"
+                                id="defaultOpen">مشخصات فردی</button>
+                    </span>
+
+                    <span class="d-flex align-items-center">
+                        <mat-icon inline>phone_in_talk</mat-icon>
+                        <button class="tablinks"
+                                (click)="openContent($event, 'suggestion-call-info')">اطلاعات تماس</button>
+                    </span>
+
+                    <span class="d-flex align-items-center">
+                        <mat-icon inline>music_note</mat-icon>
+                        <button class="tablinks" (click)="openContent($event, 'suggestion-extra-info')">مهارت های فردی</button>
+                    </span>
+
+                    <span class="d-flex align-items-center">
+                        <mat-icon inline>school</mat-icon>
+                        <button class="tablinks" (click)="openContent($event, 'suggestion-education-info')">تحصیلات</button>
+                    </span>
+
+                    <span class="d-flex align-items-center">
+                        <mat-icon inline>people_alt</mat-icon>
+                        <button class="tablinks"
+                                (click)="openContent($event, 'suggestion-family-info')">مشخصات خانوادگی</button>
+                    </span>
+
+                    <span class="d-flex align-items-center">
+                        <mat-icon inline>work_outline</mat-icon>
+                        <button class="tablinks"
+                                (click)="openContent($event, 'suggestion-job-info')">مشخصات شغلی</button>
+                    </span>
+
+                    <span class="d-flex align-items-center">
+                        <mat-icon inline>account_balance_wallet</mat-icon>
+                        <button class="tablinks"
+                                (click)="openContent($event, 'suggestion-economic-status-info')">مشخصات اقتصادی</button>
+                    </span>
+
+                    <span class="d-flex align-items-center">
+                        <mat-icon inline>face</mat-icon>
+                        <button class="tablinks"
+                                (click)="openContent($event, 'suggestion-personal-info')">مشخصات ظاهری</button>
+                    </span>
+
+                    <span class="d-flex align-items-center">
+                        <mat-icon inline>favorite_border</mat-icon>
+                        <button class="tablinks" (click)="openContent($event, 'suggestion-likes')">خواسته ها</button>
+                    </span>
+
+                    <span class="d-flex align-items-center">
+                        <mat-icon inline>view_comfy</mat-icon>
+                        <button class="tablinks" (click)="openContent($event, 'suggestion-complete-info')">مشخصات جانبی</button>
+                    </span>
+
+                    <span class="d-flex align-items-center">
+                        <mat-icon inline>analytics</mat-icon>
+                        <button class="tablinks" (click)="openContent($event, 'suggestion-respondent-info')">آزمون ها</button>
+                    </span>
+
+                    <!--          <span class="d-flex align-items-center">-->
+                    <!--                        <mat-icon inline>cloud_upload</mat-icon>-->
+                    <!--                        <button class="tablinks" (click)="openContent($event, 'suggestion-upload-file')">مدارک</button>-->
+                    <!--                    </span>-->
+                </div>
+
+                <div class="col-lg-10 col-12 px-4">
+                    <div id="suggestion-account-info" class="tabcontent">
+                        <app-suggestion-account-info [suggestionInfo]="data"></app-suggestion-account-info>
+                    </div>
+
+                    <div id="suggestion-call-info" class="tabcontent">
+                        <app-suggestion-call-info [suggestionInfo]="data"></app-suggestion-call-info>
+                    </div>
+
+                    <div id="suggestion-extra-info" class="tabcontent">
+                        <app-suggesstion-extra-info [suggestionInfo]="data"></app-suggesstion-extra-info>
+                    </div>
+
+                    <div id="suggestion-education-info" class="tabcontent">
+                        <app-suggesstion-education-info [suggestionInfo]="data"></app-suggesstion-education-info>
+                    </div>
+
+                    <div id="suggestion-family-info" class="tabcontent">
+                        <app-suggesstion-family-info [suggestionInfo]="data"></app-suggesstion-family-info>
+                    </div>
+
+                    <div id="suggestion-job-info" class="tabcontent">
+                        <app-suggesstion-job-info [suggestionInfo]="data"></app-suggesstion-job-info>
+                    </div>
+
+                    <div id="suggestion-economic-status-info" class="tabcontent">
+                        <app-suggesstion-economic-status-info
+                                [suggestionInfo]="data"></app-suggesstion-economic-status-info>
+                    </div>
+
+                    <div id="suggestion-personal-info" class="tabcontent">
+                        <app-suggesstion-personal-info [suggestionInfo]="data"></app-suggesstion-personal-info>
+                    </div>
+
+                    <div id="suggestion-likes" class="tabcontent">
+                        <app-suggesstion-likes [suggestionInfo]="data"></app-suggesstion-likes>
+                    </div>
+
+                    <div id="suggestion-complete-info" class="tabcontent">
+                        <app-suggesstion-complete-info [suggestionInfo]="data"></app-suggesstion-complete-info>
+                    </div>
+
+                    <div id="suggestion-respondent-info" class="tabcontent">
+                        <app-suggestion-respondent-info [suggestionInfo]="data"></app-suggestion-respondent-info>
+                    </div>
+
+                    <!--          <div id="suggestion-upload-file" class="tabcontent">-->
+                    <!--            <app-suggesstion-upload-file [suggestionInfo]="data"></app-suggesstion-upload-file>-->
+                    <!--          </div>-->
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions style="direction: ltr">
+    <button mat-raised-button mat-dialog-close color="warn">بستن</button>
+</mat-dialog-actions>

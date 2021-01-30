@@ -1,0 +1,117 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+
+/* @import url("assets/css/bootstrap.min.css"); */
+/* @import url("../src/assets/css/prism.min.css");
+@import url("../src/assets/css/sweetalert2.min.css");
+@import url("../src/assets/css/bootstrap-timepicker.min.css");
+@import url("../src/assets/css/wizard.css");
+@import url("../src/assets/css/leaflet.css");
+@import url("../src/assets/css/jquery-jvectormap-2.0.3.css");
+@import url("../src/assets/css/ng2-toastr.min.css");
+@import url("../src/assets/css/nouislider.min.css");
+@import url("../src/assets/css/data-table/index.css");
+@import url("../src/assets/css/data-table/icons.css");
+@import url("../src/assets/css/demo.css"); */
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+html, body {
+    height: 100%;
+}
+
+* {
+    font-family: YekiFaNum, serif;
+}
+
+body {
+    margin: 0;
+}
+
+@font-face {
+    font-family: YekiFaNum;
+    src: url(../src/app/fonts/YekiFaNum-Medium.eot);
+    src: url(../src/app/fonts/YekiFaNum-Medium.eot?#iefix) format('embedded-opentype'), url(../src/app/fonts/YekiFaNum-Medium.woff2) format('woff2'), url(../src/app/fonts/YekiFaNum-Medium.woff) format('woff'), url(../src/app/fonts/YekiFaNum-Medium.ttf) format('truetype');
+    font-weight: 500;
+    font-style: normal
+}
+
+@font-face {
+    font-family: YekiFaNum;
+    src: url(../src/app/fonts/YekiFaNum-Light.eot);
+    src: url(../src/app/fonts/YekiFaNum-Light.eot?#iefix) format('embedded-opentype'), url(../src/app/fonts/YekiFaNum-Light.woff2) format('woff2'), url(../src/app/fonts/YekiFaNum-Light.woff) format('woff'), url(../src/app/fonts/YekiFaNum-Light.ttf) format('truetype');
+    font-weight: 300;
+    font-style: normal
+}
+
+@font-face {
+    font-family: YekiFaNum;
+    src: url(../src/app/fonts/YekiFaNum-Regular.eot);
+    src: url(../src/app/fonts/YekiFaNum-Regular.eot?#iefix) format('embedded-opentype'), url(../src/app/fonts/YekiFaNum-Regular.woff2) format('woff2'), url(../src/app/fonts/YekiFaNum-Regular.woff) format('woff'), url(../src/app/fonts/YekiFaNum-Regular.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal
+}
+
+@font-face {
+    font-family: YekiFaNum;
+    src: url(../src/app/fonts/YekiFaNum-Bold.eot);
+    src: url(../src/app/fonts/YekiFaNum-Bold.eot?#iefix) format('embedded-opentype'), url(../src/app/fonts/YekiFaNum-Bold.woff2) format('woff2'), url(../src/app/fonts/YekiFaNum-Bold.woff) format('woff'), url(../src/app/fonts/YekiFaNum-Bold.ttf) format('truetype');
+    font-weight: 700;
+    font-style: normal
+}
+
+@font-face {
+    font-family: YekiFaNum;
+    src: url(../src/app/fonts/YekiFaNum-Heavy.eot);
+    src: url(../src/app/fonts/YekiFaNum-Heavy.eot?#iefix) format('embedded-opentype'), url(../src/app/fonts/YekiFaNum-Heavy.woff2) format('woff2'), url(../src/app/fonts/YekiFaNum-Heavy.woff) format('woff'), url(../src/app/fonts/YekiFaNum-Heavy.ttf) format('truetype');
+    font-weight: 900;
+    font-style: normal
+}
+
+button:focus {
+    outline: 0;
+}
+
+.mat-body {
+    font: unset !important;
+}
+
+.mat-icon {
+    display: inline-flex !important;
+}
+
+form label {
+    letter-spacing: 0 !important;
+}
+
+.mat-input-element:disabled{
+    color: black !important;
+}
+
+.mat-paginator-range-actions {
+    flex-grow: 1 !important;
+    justify-content: end !important;
+    align-items: baseline !important;
+    flex-wrap: wrap !important;
+    -webkit-justify-content: flex-end !important;
+}
+
+.mat-dialog-container {
+    width: 80vw !important;
+    height: auto !important;
+    min-width: 80vw !important;
+    min-height: 570px !important;
+}
+
+
+@media (max-width: 800px) {
+    .mat-table {
+        min-width: 800px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .mat-dialog-container {
+        height: auto !important;
+        min-height: unset !important;
+    }
+}

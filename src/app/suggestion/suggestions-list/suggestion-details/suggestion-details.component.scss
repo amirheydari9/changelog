@@ -1,0 +1,65 @@
+.modal-top{
+  background: #f4f2f2
+}
+.user-container {
+  border-bottom: 3px solid #00bfd6;
+  position: relative;
+  font-size: 1rem !important;
+}
+
+.triangle-up {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 15px solid #00bfd6;
+  margin: 0 auto;
+  bottom: -1px;
+  position: absolute;
+}
+
+.triangle-left {
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-right: 15px solid #00bfd6;
+  border-bottom: 10px solid transparent;
+}
+
+.tab {
+}
+
+.tab button {
+  display: block;
+  background-color: inherit;
+  color: #a2a2a2;
+  padding: 13px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: right;
+  cursor: pointer;
+  transition: 0.3s ease;
+  border-left: 5px solid #dcdcdc;
+}
+
+.tab button:hover {
+}
+
+.tab button.active {
+  border-left: 5px solid #00c4ff;
+  color: #404040;
+}
+
+.tabcontent {
+}
+
+.mat-icon {
+  color: #a2a2a2;
+}
+
+@media screen and (max-width: 991px){
+  .tab button{
+    border-left: unset !important;
+  }
+}
