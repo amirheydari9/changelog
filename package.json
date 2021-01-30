@@ -1,6 +1,6 @@
 {
   "name": "apex",
-  "version": "5.1.0",
+  "version": "5.1.1",
   "license": "",
   "scripts": {
     "ng": "ng",
@@ -8,7 +8,8 @@
     "build": "ng build --prod --base-href /admin/",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "release": "standard-version"
   },
   "private": true,
   "dependencies": {
@@ -70,6 +71,7 @@
     "karma-jasmine-html-reporter": "1.0.0",
     "protractor": "5.4.2",
     "rxjs-compat": "6.2.0",
+    "standard-version": "^9.1.0",
     "ts-node": "5.0.1",
     "tslint": "5.7.0",
     "typescript": "3.2.4"
